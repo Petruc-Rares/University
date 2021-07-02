@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "skel.h": "c",
+        "string.h": "c",
+        "in.h": "c",
+        "queue.h": "c"
+    }
+}

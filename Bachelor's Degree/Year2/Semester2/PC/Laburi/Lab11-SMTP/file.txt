@@ -1,0 +1,12 @@
+MIME-Version: 1.0
+From: profesor@upb.ro
+To: student@upb.ro
+Subject: Tema
+Content-Type: text/plain
+
+Draga student,
+
+Fa-ti tema!
+
+Cu bine,
+Profesorul.

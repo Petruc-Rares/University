@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "queue.h": "c",
+        "skel.h": "c",
+        "commonstructures.h": "c"
+    }
+}

@@ -1,0 +1,32 @@
+322CD, Petruc Rares, TEMA 3 PC
+
+    Am ales sa realizez logica programului intr-o bucla in care se va intra
+pana la introducerea de la tastatura a "exit". Functie de inputul primit
+de la utilizator, am formulat diversele cereri de tip GET, POST sau DELETE
+implementate in requests.c (preluat si modificat din cadrul laboratorului 10).
+Pentru parsarea raspunsurilor primite de la server in format JSON sau formarea
+body-urilor trimise catre server, de tip "application/json", am folosit functii
+ca strstr, respectiv strprintf. Nu au fost prea multe restrictii in cerinta,
+motiv pentru care nu am:
+    1) verificat rezultatele intoarse de alocari (nici in labul 10 nu erau, am
+    zis ca oricum nu e asta obiectivul temei). Totusi am dat freeuri destul de
+    aproape de momentele in care nu mai era necesara memoria alocata dinamic
+    anterior;
+    2) verificat rezultatele intoarse de functii ca sscanf, etc;
+    3) tratat alte status code-uri decat cele pentru care erau returnate erorile
+    specificate in enunt sau rezultatele de succes.
+    4) parsat mesajele de eroare, le-am afisat direct in format json; sigur, o
+    puteam face printr-un sscanf din care extrageam doar ce era necesar, in caz
+    de se solicita asta.
+
+    Am ales sa verific daca raspunsurile primite de la server contin erori sau nu,
+ghidandu-ma dupa Status Code. Consider ca aceasta alegere permite mai multa
+libertate in implementare. In loc sa fac un singur strstr dupa error, stiu
+exact ce a determinat eroarea primita de catre utilizator si pot realiza diverse
+alte actiuni functie de acesta.
+    Tema mi s-a parut foarte draguta, am acumulat cunostinte mai multe despre
+HTTP si lucruri ce deriva din el, cookieuri, tokenuri, alte headere, etc.
+
+Obs: In caz de succes, am vazut ca server-ul nu returneaza intotdeauna ceva in
+partea de DATA, asa ca functie de cerinta, am adaptat eu mesajul corespunzator
+status code-ului de CREATED sau OK.

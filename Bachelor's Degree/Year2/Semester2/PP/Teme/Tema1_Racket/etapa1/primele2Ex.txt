@@ -1,0 +1,7 @@
+(define (empty-counter index)
+  (make-counter index 0 '()))
+
+(define (tt+ C minutes)
+  (match C
+    [(counter index tt queue)
+     make-counter index (+ tt minutes) queue]))

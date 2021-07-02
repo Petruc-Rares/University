@@ -1,0 +1,25 @@
+Petruc Rares, 322CD TEMA1-PC
+
+In cadrul buclei while, am implementat pasii 1-10 din enuntul temei.  Am inceput
+cu implementarea acelui ARP request catre router, la care am raspuns cu arp
+reply-ul aferent cu adresa MAC a interfetei routerului catre care a fost trimisa
+cererea. Am urmarit pachetele pe Wireshark, sa ma lamuresc ceva mai bine cu
+ordinea bytesilor si cand exact trebuie sa folosim htons, ntohs, etc. In acelasi
+timp, am vrut sa ma familiarizez cu vizualizarea pachetelor si a mesajelor din
+Wireshark de tipul "Who has.."...  Ulterior, am urmat exemplul de la pagina 11
+din enuntul temei, cel cu pingul dintre h0 si h1 si am continuat cu
+implementarea celorlalti pasi pentru a trimite pachetul de ping request la
+destinatie. Mi-au trecut toate testele de forward si a ramas icmp-ul,
+responsabil de erori si raspuns la icmp echo reply. Am ales trie pentru a face
+o cautare in O(32) a route_table_entry-ului cautat, in loc de cautarea liniara
+prin toate route_table_entry-urile din rtable.
+
+Am intampinat probleme in a intelege enuntul cu exactitate, nu stiam daca sa
+plec de la cei 10 pasi sau de la cerintele de la pagina 5 a temei. In rest,
+numai debugging tipic.
+
+Despre bonus: Am urmat pasii de pe linkul din indrumar si am ales campul ttl
+drept mesaj m, pe care l-am extins pe 16 biti.
+
+Feedback: Tema mi s-a parut foarte interesanta. Cu siguranta, am inteles mai
+bine ce se intampla cu pachetele la un simplu ping.

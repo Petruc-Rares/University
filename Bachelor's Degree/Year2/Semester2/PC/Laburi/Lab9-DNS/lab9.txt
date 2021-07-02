@@ -1,0 +1,141 @@
+Pentru a) si b)
+
+dig A single-v4.protocoale.club +short
+127.0.0.1
+
+dig AAAA single-v6.protocoale.club +short
+::1
+
+dig AAAA multi-v6.protocoale.club +short
+::1
+::3
+::2
+::4
+
+dig AAAA multi.protocoale.club +short
+::4
+::2
+::3
+::1
+
+dig A multi.protocoale.club +short
+127.3.3.3
+127.1.1.1
+127.4.4.4
+127.2.2.2
+
+dig A protocoale.protocoale.club +short
+127.42.42.42
+
+Pentru c)
+dig MX protocoale.club +short
+30 alt3.gmail-smtp-in.l.google.com.
+20 alt2.gmail-smtp-in.l.google.com.
+10 alt1.gmail-smtp-in.l.google.com.
+
+Pentru d)
+dig A protocoale.club +authority +nocomments +noadditional +nostats +noanswer
+
+; <<>> DiG 9.16.1-Ubuntu <<>> A protocoale.club +authority +nocomments +noadditional +nostats +noanswer
+;; global options: +cmd
+;protocoale.club.               IN      A
+protocoale.club.        1693    IN      SOA     dns1.registrar-servers.com. hostmaster.registrar-servers.com. 1620012129 43200 3600 604800 3601
+
+Pentru e)
+
+dig @90.82.197.129 google.com +short
+216.58.215.174
+
+dig @213.184.225.37 google.com +short
+142.250.186.46
+
+Nu avem rezultat acelasi IP, intrucat acesta este dependent geogerafic de DNS-ul prin care s-a facut solicitarea.
+
+Pentru f)
+cat queries.txt 
+protocoale.club
+protocoale.protocoale.club
+pcom.protocoale.club
+pc.protocoale.club
+multi.protocoale.club
+multi-v6.protocoale.club
+multi-v4.protocoale.club
+dorinel.protocoale.club
+single.protocoale.club
+single-v6.protocoale.club
+single-v4.protocoale.club
+
+dig -f queries.txt +noall +answer
+protocoale.protocoale.club. 0   IN      A       127.42.42.42
+pcom.protocoale.club.   0       IN      CNAME   protocoale.protocoale.club.
+protocoale.protocoale.club. 0   IN      A       127.42.42.42
+pc.protocoale.club.     0       IN      CNAME   pcom.protocoale.club.
+pcom.protocoale.club.   0       IN      CNAME   protocoale.protocoale.club.
+protocoale.protocoale.club. 0   IN      A       127.42.42.42
+multi.protocoale.club.  0       IN      A       127.1.1.1
+multi.protocoale.club.  0       IN      A       127.3.3.3
+multi.protocoale.club.  0       IN      A       127.4.4.4
+multi.protocoale.club.  0       IN      A       127.2.2.2
+multi-v4.protocoale.club. 0     IN      A       127.3.3.3
+multi-v4.protocoale.club. 0     IN      A       127.4.4.4
+multi-v4.protocoale.club. 0     IN      A       127.2.2.2
+multi-v4.protocoale.club. 0     IN      A       127.1.1.1
+dorinel.protocoale.club. 0      IN      A       127.42.0.0
+single.protocoale.club. 0       IN      A       127.0.0.1
+single-v4.protocoale.club. 0    IN      A       127.0.0.1
+
+Pentru g)
+dig test.dorinel.protocoale.club +noall +answer +trace
+.                       85229   IN      NS      m.root-servers.net.
+.                       85229   IN      NS      b.root-servers.net.
+.                       85229   IN      NS      c.root-servers.net.
+.                       85229   IN      NS      d.root-servers.net.
+.                       85229   IN      NS      e.root-servers.net.
+.                       85229   IN      NS      f.root-servers.net.
+.                       85229   IN      NS      g.root-servers.net.
+.                       85229   IN      NS      h.root-servers.net.
+.                       85229   IN      NS      a.root-servers.net.
+.                       85229   IN      NS      i.root-servers.net.
+.                       85229   IN      NS      j.root-servers.net.
+.                       85229   IN      NS      k.root-servers.net.
+.                       85229   IN      NS      l.root-servers.net.
+.                       85229   IN      RRSIG   NS 8 0 518400 20210519050000 20210506040000 14631 . asV1d3Tpp5hHzod7QiDD9avSLtbbjCT0v3tV0VoKd5rIwfyhOpbtESdG bz2em4kYzmXinat8Fj3aEB3m5tPTpKXTFsWvjWLpWNRXWU3AF3pFz/N0 oN25JkKiu6PdPrue0hGcIsXUW9rf89kfqNCeCrDnML6S3TI6YlLdWF0J D0rKkyX+2levfgtlyeMnbpY+gmtJDAvNTXueL1NJbyih8reDUarfEDEW pbzkMS5rfI6M9DIpUlz9MXuaVst6skQAVm2mwYLSoSrylgCQvz/8ZXpd FCVjb1EuJ94ONcj5GAalpa28t0+U7O1pbWWkNdyZ0fJRtjfSlpApUddN UxMj+A==
+;; Received 525 bytes from 172.23.240.1#53(172.23.240.1) in 840 ms
+
+club.                   172800  IN      NS      ns5.dns.nic.club.
+club.                   172800  IN      NS      ns1.dns.nic.club.
+club.                   172800  IN      NS      ns3.dns.nic.club.
+club.                   172800  IN      NS      ns6.dns.nic.club.
+club.                   172800  IN      NS      ns2.dns.nic.club.
+club.                   172800  IN      NS      ns4.dns.nic.club.
+club.                   86400   IN      DS      29815 8 1 7F2B8E1D8B715BB382111A84F4552A599462017A
+club.                   86400   IN      DS      29815 8 2 3B67F899B57454E924DD1EFAE729B8741D61BA9BC8D76CD888919E5C 0950CA23
+club.                   86400   IN      RRSIG   DS 8 1 86400 20210519050000 20210506040000 14631 . Pb2M7mOFVehBXLFe+ox0iKX3JRLbZnr0DJZ9ZeKoOEkGPyvIY1G+HxBf bTCJydMJhHUGOHeFrRcbcILbiDQ+NmAEGHJbuFBzstZGLxKP2q5iuK0D FZlZaNcEdJjsT5ms6zUI5bUw9yKtMEzy7AeTH8OGBxDuN7fAudBPWr7b mFgDGZL+zObe6Zgn7oFPVuMjK5X1b0HcL+AjrxuTUgxRzdCUtm84A0lt /gpAlzFy/sVQZCnXTAZkOR9j4eXn84kq71Uo4lybUpwQwGKlkUqMQ25x wb+3vc4yvsZCltbuEDsGX5NoIkn5ww4J32z5GaoV5uRO1IM3cTSLSyYF NVcHjw==
+;; Received 808 bytes from 202.12.27.33#53(m.root-servers.net) in 60 ms
+
+protocoale.club.        3600    IN      NS      dns1.registrar-servers.com.
+protocoale.club.        3600    IN      NS      dns2.registrar-servers.com.
+protocoale.club.        3600    IN      DS      51214 13 1 30880D616BB4E2F12FAF6313FE54CD2A14371718
+protocoale.club.        3600    IN      RRSIG   DS 8 2 3600 20210604143917 20210505134008 34263 club. c7WDCSg/HBTWrRPNjn6n6xdJunUMxCE8zkyefKH7G7w2ouNvMjnprAf5 a9GpK9SmAanl3SyAdi2ALKKpcD5XCFkMhdX0+G47vZZjhfw5BHCnzoR5 6FkM0EJUkOdy0WG18vc/DhalkYXtG4C+/S6/IwoPXCmleUkiAbzttnWj YLPF2ZDjpSx4Gp1KGXWIsg1MLk3SYJC6LaUrfm76HUfPhA==
+;; Received 348 bytes from 156.154.159.215#53(ns3.dns.nic.club) in 30 ms
+
+dorinel.protocoale.club. 300    IN      NS      potato.dfilip.xyz.
+dorinel.protocoale.club. 3601   IN      NSEC    multi.protocoale.club. NS RRSIG NSEC
+dorinel.protocoale.club. 3601   IN      RRSIG   NSEC 13 3 3601 20210513000000 20210422000000 20015 protocoale.club. PBtoTAj5LGKsps1dasTFu8vzAMgUhTJd5mN227WCB4A9GquTGwcVlp8D cL/WHk8gHT3IJyFjJcUSUHopsCTX3A==
+;; Received 242 bytes from 156.154.133.200#53(dns2.registrar-servers.com) in 40 ms
+
+test.dorinel.protocoale.club. 300 IN    A       127.0.42.0
+test.dorinel.protocoale.club. 300 IN    A       127.0.0.42
+dorinel.protocoale.club. 300    IN      NS      potato.dfilip.xyz.
+;; Received 148 bytes from 82.78.81.172#53(potato.dfilip.xyz) in 0 ms
+
+protocoale.club: dns1.registrar-servers.com, dns2.registrar-servers.com
+dorinel.protocoale.club: potato.dfilip.xyz
+
+Pentru h)
+dig -x 8.8.8.8 +noall +answer
+8.8.8.8.in-addr.arpa.   0       IN      PTR     dns.google. 
+
+E in ordine inversa, pentru ca cautarea in IP se face de la dreapta la stanga
+
+Pentru i)

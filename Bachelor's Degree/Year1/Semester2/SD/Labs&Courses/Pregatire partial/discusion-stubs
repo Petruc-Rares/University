@@ -1,0 +1,129 @@
+
+// Insertii
+ListNode* insertBefore(ListNode* head, Item x, Item d){
+	// 1. Aloca memorie pentru un nou nod
+    // 2. Depune d in nodul referit de 'node'
+	// 3. Localizeaza nodul care contine x (in caz ca exista)
+	// 4. Actualizeaza legaturile
+	ListNode* node = (ListNode*) malloc(sizeof(ListNode));
+	node->elem = d;
+	node->next = NULL;
+
+	ListNode* prev = NULL;
+	ListNode* current = head;
+
+	while(current != NULL && current->elem != x){
+		prev = current;
+		current = current->next;
+	}
+
+	if(current != NULL){
+		node->next = current;
+		if(prev != NULL) prev->next = node;
+		else head = node;
+	}else{
+		free(node);
+	}
+
+	return head;
+}
+
+
+ListNode* insertAfter(ListNode* head, Item x, Item d){
+	// 1. Aloca memorie pentru un nou nod
+    // 2. Depune d in nodul referit de 'node'
+	// 3. Localizeaza nodul care contine x (in caz ca exista)
+	// 4. Actualizeaza legaturile
+	ListNode* node = (ListNode*) malloc(sizeof(ListNode));
+	node->elem = d;
+	node->next = NULL;
+
+	ListNode* current = head;
+
+	while(current != NULL && current->elem != x){
+		current = current->next;
+	}
+
+	if(current != NULL){
+		node->next = current->next;
+		current->next = node;
+	}else{
+		free(node);
+	}
+
+	return head;
+}
+
+
+// Lista circulara
+ListNode* jelim(ListNode* head, int M){
+	ListNode* prev = NULL;
+	ListNode* current = head;
+	for(int i = 1; i < M; i++){
+		prev = current;
+		current = current->next;
+	}
+
+	prev->next = current->next;
+	free(current);
+
+	return prev->next;
+}
+
+// Santinele
+ListNode* createList(void){
+	ListNode* head = (ListNode*) malloc(sizeof(ListNode));
+	return head;
+}
+
+ListNode* insertFront(ListNode* head, Item d){
+	ListNode* node = (ListNode*) malloc(sizeof(ListNode));
+	node->elem = d;
+
+	node->next = head->next;
+	head->next = node;
+
+	return head;
+
+}
+
+// Insertia unui nod intr-o lista sortata
+void insertSorted(ListNode** head, ListNode* node) {
+
+	ListNode *prev = NULL;
+	ListNode *current = (*head);
+
+
+	while(current != NULL && current->elem < node->elem){
+		prev = current;
+		current = current->next;
+	}
+	if(current != NULL){
+		node->next = current;
+		if(prev != NULL)
+			prev->next = node;
+	}else{
+		(*head) = node;
+	}
+}
+
+
+// Insertion sort
+ListNode* insertionSort(ListNode *head){
+    ListNode* sorted = NULL;
+    ListNode *current = head;
+    while (current != NULL){
+        // store next for next iteration
+    	ListNode* next = current->next;
+
+        // insert current in sorted linked list
+    	insertSorted(&sorted, current);
+
+        // Update current
+        current = next;
+    }
+
+    return sorted;
+}
+
+

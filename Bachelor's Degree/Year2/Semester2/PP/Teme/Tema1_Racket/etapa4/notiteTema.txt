@@ -1,0 +1,2 @@
+pentru functia close:
+	faci tt - infinit si in min-tt verifici sa dea diferit de infinit

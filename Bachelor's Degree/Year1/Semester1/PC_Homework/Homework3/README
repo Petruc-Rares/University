@@ -1,0 +1,29 @@
+312CD Petruc Rares rares.petruc					03.01.2020
+
+Cerinta tema: https://ocw.cs.pub.ro/courses/programare/teme_2019/tema3_2019_cbd
+
+				TEMA_3_PC
+
+  Task_1: Am copiat headerul din fisierul BMP sursa, dupa care am calculat
+numarul de bytes necesari paddingului imaginii in format BMP. In functia
+copyBWMatrix, la fiecare 3 bytes cititi, am facut media aritmetica a acestora
+si am atribuit-o elementului corespunzator din matricea pozei in format BMP. 
+
+  Task_2: Am calculat minimul dintre dimensiunile imaginii. Am modificat
+headerul imaginii dupa noile dimensiuni, iar ulterior functie de 
+inegalitatea/egalitatea dintre dimensiunile pozei am facut noua poza.
+
+  Task_3: Am alocat 2 matrice, una in care am construit matricea dorita 
+(cpyMatrix) si una in care am lucrat cu vecinii fiecarui element in parte
+(photoMatrix).
+
+  Task_4: Similar cu taskul 3, doar ca in plus de aceasta data am verificat daca
+litera este egala cu m sau M, iar pentru fiecare caz am calculat minimul,
+respectiv maximul dintr-o zona de vecini.
+  
+  Task_5: Algoritmul am incercat sa-l gandesc recursiv, dar din teama de a
+nu genera un stack overflow, l-am gandit putin diferit. Astfel, de fiecare data 
+cand se gaseste un element neinitializat (adica are indexul 0), se formeaza si
+restul elementelor. Cum? Se cauta elemente ce respecta conditia din task,
+ care vor avea la randul lor indexul elementului "radacina", pana
+cand nu se mai gaseste niciunul.

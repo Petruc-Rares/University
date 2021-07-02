@@ -1,0 +1,77 @@
+322CD, PETRUC RARES
+                                    TEMA 2 PA 2021
+
+1) Poduri.java:
+    Am inceput exercitiul prin citirea inputului, creand un tablou bidimensional,
+pe baza caruia am creat logica programului. Tabloul bidimensional are dimensiune
+N x M. Am aplicat BFS pe graful reprezentat prin tabloul mentionat mai devreme,
+deoarece costurile arcelor intre noduri reprezentate de 'V', 'O', 'D' si '.' este
+0. Astfel la fiecare pas de BFS, am verificat in ce caz ne aflam, incepand cu
+pozitia de start si am adaugat in coada pozitiile in care se poate ajunge din
+celula curenta, iar in cazul in care celula curenta se afla pe prima sau ultima
+linie/coloana, executia programului se incheia. Am creat un vector de visitati,
+realizand o bijectie intre pozitia in tablou, reprezentata de (rowIdx, colIdx)
+si id-ul acesteia.
+    Complexitate spatiala: O(M * N + 2 * (M + N)) - reprezentata de vectorii de
+vizitati, respectiv de distante (asta nu am pus-o O(M+N), pentru ca problema
+se poate extinde la a lucra si cu pozitiile corespunzatoare pamantului de pe
+marginea tabloului bidimensional primit ca input)
+    Complexitate temporala: O(M * N + M * N * 4) = O(M * N), unde V = M * N,
+si E = M * N * 4, in cazul in care toate nodurile din matrice ar fi de tip 'D'.
+    Dificultati intampinate: In constructia grafului, am crezut ca pot crea un
+graf cu liste de adiacenta si matrice, la modul in care sa asociez fiecarui
+element vecinii si din cauza asta am pierdut mult timp pentru ca luam TLE.
+Mi-a luat vreo zi jumatate, poate chiar doua, pana sa realizez ca nu e imperios
+necesar sa reprezint inputul ca graf, si ca pot lucra direct pe el.
+
+2) Adrese.java:
+    Am prelucrat inputul, folosind un hashmap. A fost necesar sa suprascriu
+metode ca equals si hashcode, pentru a verifica daca un mail este deja asociat
+unui user. Am folosit o clasa comuna pentru adrese si useri, obiectele
+diferentiindu-se prin campul type. Hashmap-ul este defapt structura de date
+prin care am reprezentat graful problemei. Dupa ce am finalizat reprezentarea
+grafului, am rulat bfs pe el, astfel obtinand fiecare componenta conexa in
+parte din acesta, concatenand-o la un vector in care am memorat toate
+componentele conexe. Am realizat un Collections.sort cu un comparator prin
+intermediul careia am obtinut formatul dorit de output din enunt. Pentru
+listele de mailuri, am considerat mai util sa ma folosesc de un PriorityQueue,
+in urma comparatiilor de timp cu un Collections.sort pe lista de mailuri
+corespunzatoare fiecarui user. Fiecare componenta conexa a reprezentat o
+persoana reala, caruia i s-a asociat username-ul cel mai mic d.p.d.v
+lexicografic.
+    Complexitate spatiala: O(N * K); K = max(K1, K2, ..., Kn). (dimensiune hashmap)
+    Complexitate temporala: O(V + E) datorata bfs-ului realizat, unde V = N * K,
+iar E = N * K * 2, deci tot un O(N * K).
+    Dificultati intalnite: In scrierea rezultatului final. Am folosit in final
+BufferedWriter, dupa ce primeam des TLE in urma lucrului cu alte clase ce 
+scriu in fisiere.
+
+3) Lego.java:
+    Am generat toate posibilitatile de combinatii de piese (candidati), folosind
+backtracking, ulterior acestui pas verificand cea mai buna combinatie. Am ales
+sa folosesc un tablou bidimensional, necesar pentru programarea dinamica la care
+m-am gandit, metoda de rezolvare fiind asemanatoare problemei subset-sums. Astfel,
+am creat un tablou, al carui indecsi pe randuri reprezinta numarul de elemente
+maxim ce se poate afla intr-o submultime, iar al carui indecsi de pe coloane
+reprezinta suma ce poate sau nu fi obtinuta. La randul i, coloana j, semnificand
+numarul de submultimi de cardinal maxim i, al caror suma da j, am verificat
+daca la randul i - 1, coloana j - v[k], s-a putut obtine suma j - v[k]
+pentru un k = 1..N, iar in caz afirmativ, am considerat ca da, se poate obtine
+suma corespunzatoare j dintr-o submultime de cardinal maxim i. In acelasi timp,
+daca deja pe randul i - 1, coloana j, suma era deja obtinuta, nu puteam spune
+la randul i, coloana j, decat ca suma se poate obtine in continuare.
+Complexitate spatiala: O(T^2), datorata tabloului bidimensional utilizat pentru pd.
+Complexitate temporala: O((N-1)^K), datorata backtrackingului, intrucat pentru
+fiecare pozitie, cu exceptia primeia, initializata la 1, se incearca alocarea
+unei dimensiuni posibile de la 2 la K.
+
+
+Observatii: Fisierul MyScanner.java, disponibil la https://pastebin.com/XGUjEyMN,
+mi-a fost de folos in citirea rapida a inputului.
+
+Concluzii tema: Dincolo de aplicabilitatea cerintelor din tema, consider ca
+restrictiile de timp au determinat o intelegere mai amanuntita a structurilor
+de date si a instructiunilor folosite in cadrul temei. Tema mi-a luat in jur
+de 4 zile, din care 2 zile au fost doar pe prima cerinta. Dificultatea o
+aproximez de nivel usor spre mediu in ceea ce priveste algoritmii utilizati,
+respectiv mediu pentru incadrarea in limitele de timp specificate.

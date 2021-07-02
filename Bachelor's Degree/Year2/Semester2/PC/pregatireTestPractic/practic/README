@@ -1,0 +1,4 @@
+
+Am folosit:
+https://stackoverflow.com/questions/2854488/reading-a-string-with-spaces-with-sscanf
+- pentru a putea atribui intr-un buffer text separat prin spatii la UPDATE_DESC

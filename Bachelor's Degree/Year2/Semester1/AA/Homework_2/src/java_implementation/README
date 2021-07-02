@@ -1,0 +1,92 @@
+                            README
+                   TEMA_2_ANALIZA_ALGORITMILOR (05.01.2021 - 24.01.2021)
+
+Student: Petruc Rares
+Grupa: 322CD
+Mail institutional: rares.petruc@stud.acs.upb.ro
+
+##tasks.Task1:
+    I chose to select variables representing each possible assignment of a color
+    to a vertex (e.q: for 3 vertexes and 3 colors, i have 9 variables,
+    first 3 representing the possibilities of colouring the first vertex,
+     next 3 for the 2nd vertex and so on).
+    For this task, I have built three types of clauses that "translated"
+    the k-color problem instance to a sat problem instance, as explained below:
+        - type 1 clauses that ensured that no 2 vertexes sharing the same edge
+        are colored the same way;
+        - type 2 clauses that ensured that each vertex in the graph
+         has to be colored;
+        - type 3 clauses that ensured that each vertex in the graph
+         has one single color.
+
+    After oracle's response, i selected the positive variables and then i got
+    the right color (spy for the purpose of this task), using the getSpyId
+    method for each vertex, in case the coloring (assignemnt of the spies)
+    could have been done.
+
+    Complexity:
+        - building the graph: O (N + M);
+        - building type1 clauses: O(M * K);
+        - building type2 clauses: O(N);
+        - building type3 clauses: O(K^2 * noFamilies).
+
+##tasks.Task2:
+        I chose to select variables representing possible positions that a
+        vertex can have in the presumed existent k-clique we are looking for.
+        (e.q: for 6 vertexes and a 4-clique, i have 24 variables,
+        first 4 representing the possible positions the first vertex in the clique,
+         next 4 for the 2nd vertex and so on).
+        For this task, I have built three types of clauses that "translated"
+        the clique problem instance to a sat problem instance, as explained below:
+            - type a clauses that ensured that each position in the clique
+            should be taken;
+            - type b clauses that ensured that any vertexes that are not connected
+            in the graph can't be in the clique;
+            - type c clauses that ensured that each vertex in the clique
+            takes a single position in it and no two different vertexes can take
+            the same position.
+
+        After oracle's response, i selected the positive variables and then i got
+        the corresponding vertex id (family id for the purpose of this task),
+        using the getFamilyId method for vertexes in clique, in case the clique
+        we were looking for existed
+
+        Complexity:
+            - building the graph: O (N + M);
+            - building typeA clauses: O(K);
+            - building typeB clauses: O((N^2 - M) * K^2)
+            - building typeC clauses: O(N * K^2 + N^2 * K).
+
+#tasks.Task3:
+    For this task, i found all over the internet the following theorem:
+    "if a graph G has a clique of size k then the complement of G
+     has a vertex cover of size n−k, where n is the number of vertices."
+
+     So, i've found the maximum clique size in the complementary graph by
+     checking all the possible cliques in it (iterating from 1 to the number
+     of vertexes) to establish the minimum number of mafia families that need
+     to be arrested for the rest of the families not to be friends one another.
+
+    The complexity for this task is approximately equal to O(K * complexity of task 2),
+    as now we are not writing the result for task2 ( so -O(N * K) for the complexity
+    of task 2 ) + the complexity for the writing which is equal to O (N - max(clique_size
+    in the complementary graph built in the task)).
+
+    Complexity general observations for the below tasks:
+        - writing the final answer for each task: O(N * K), as we iterate
+         through all the variables;
+        - amortised cost for string builder concatenation (append) is O(1), so
+        I have not really mentioned about it;
+
+
+    Feedback:
+        I found the homework extremely interesting and useful. It was not that
+    difficult if you read the statement carefully and the research done on the
+    internet in solving the problems gave me new valuable information. Thank
+    you for this homework!
+
+    During implementation of the tasks, I followed some of the websites
+    listed below, last consulted at 05.12.2021:
+        - Graphs in Java: https://www.baeldung.com/java-graphs;
+        - BufferedReader: https://www.baeldung.com/java-buffered-reader;
+        - BufferedWriter: https://beginnersbook.com/2014/01/how-to-write-to-file-in-java-using-bufferedwriter/.

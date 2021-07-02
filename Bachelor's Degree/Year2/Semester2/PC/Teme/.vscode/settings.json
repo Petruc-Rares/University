@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "skel.h": "c",
+        "queue.h": "c"
+    }
+}

@@ -1,0 +1,82 @@
+1.
+Signature Algorithm: sha256WithRSAEncryption
+Issuer: C = US, O = Google Trust Services, CN = GTS CA 1O1
+Validity
+            Not Before: May  3 09:02:30 2021 GMT
+            Not After : Jul 26 09:02:29 2021 GMT
+Public-Key: (256 bit)
+                pub:
+                    04:f7:f7:de:4d:af:d6:b4:ca:b5:49:1f:df:90:71:
+                    cd:f6:cb:b7:fd:7a:d9:db:39:e4:93:68:2c:9d:55:
+                    fb:1f:30:4e:75:e0:ef:58:29:4c:ac:66:3e:02:63:
+                    f5:e2:3f:bc:2c:e1:55:3d:ae:d8:54:95:84:03:7c:
+                    3f:7b:d5:2f:25
+
+2.
+M-am logat aici: http://login.onlineplanservice.com/Login.aspx?ReturnUrl=%2f.
+Am capturat asta: 
+POST /Login.aspx?ReturnUrl=%2f HTTP/1.1
+Host: login.onlineplanservice.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:87.0) Gecko/20100101 Firefox/87.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 478
+Origin: http://login.onlineplanservice.com
+Connection: keep-alive
+Referer: http://login.onlineplanservice.com/Login.aspx?ReturnUrl=%2f
+Cookie: Username=empty; Password=empty; ASP.NET_SessionId=k5tccvueapldhlwebk5x1fz0
+Upgrade-Insecure-Requests: 1
+
+__VIEWSTATE=%2FwEPDwUKMTIxMjExMzM5Ng9kFghmD2QWAmYPFgIeB1Zpc2libGVoZAIBDw8WAh4EVGV4dGVkZAICDw8WAh8BZWRkAgMPZBYEZg8WAh4Dc3JjBTFodHRwczovL2Nkbm9wcy5vbmxpbmVwbGFuc2VydmljZS5jb20vbG9nby9vcHMucG5nZAIFDxYCHglpbm5lcmh0bWwFNlBhc3N3b3JkIGRvZXMgbm90IG1hdGNoIGZvciB0aGUgdXNlcm5hbWUgbGlzdGVkIGFib3ZlLmQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFDFNhdmVVc2VyTmFtZZwv3Dt935GMUIOGrBmWWEqzxdFu3rXWLA8xNv%2FaTZEc&__VIEWSTATEGENERATOR=C2EE9ABB&username=student&password=student&Button1=LoginHTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Server: Microsoft-IIS/10.0
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Date: Thu, 27 May 2021 14:50:01 GMT
+Content-Length: 6263
+______________________
+Se vede clar in viewState pe la final usernameul si parola trimise catre server.
+
+
+3.
+TLSv1.3 (IN), TLS handshake, Newsession Ticket (4)
+ nmap --script ssl-enum-ciphers -p 443 github.com
+Starting Nmap 7.80 ( https://nmap.org ) at 2021-05-27 18:03 EEST
+Nmap scan report for github.com (140.82.121.3)
+Host is up (0.040s latency).
+rDNS record for 140.82.121.3: lb-140-82-121-3-fra.github.com
+
+PORT    STATE SERVICE
+443/tcp open  https
+| ssl-enum-ciphers: 
+|   TLSv1.2: 
+|     ciphers: 
+|       TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (ecdh_x25519) - A
+|       TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (ecdh_x25519) - A
+|       TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (ecdh_x25519) - A
+|       TLS_RSA_WITH_AES_128_GCM_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_256_GCM_SHA384 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+|     compressors: 
+|       NULL
+|     cipher preference: server
+|_  least strength: A
+
+4.
+	In mare, as zice de cuplul (ssh, telnet) ca este analog
+(https, http).

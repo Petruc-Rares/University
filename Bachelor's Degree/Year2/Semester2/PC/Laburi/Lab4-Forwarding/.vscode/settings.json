@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "skel.h": "c",
+        "if.h": "c",
+        "socket.h": "c",
+        "ethernet.h": "c",
+        "if_packet.h": "c",
+        "byteorder.h": "c",
+        "if_arp.h": "c",
+        "ip_icmp.h": "c"
+    }
+}

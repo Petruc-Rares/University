@@ -1,0 +1,139 @@
+322CD PETRUC RARES
+LABORATOR 1
+
+Aplicam metoda iterativa, arborelui, substitutiei sau Teorema Master in calcularea complexitatilor.
+
+1. 
+a) 
+power(x, n)
+	result = 1;
+
+	for (i = 0; i < n; i++)
+		result = result * x; 
+
+	return result;
+
+
+Complexitate: Theta(n), intrucat avem un for de la 0 la n-1, deci n pasi,
+in care se executa operatii constante (compararea iteratorului cu n,
+incrementarea acestuia si inmultirea rezultatului cu x) 
+
+b)
+power(x, n)
+	if (n == 0)
+		return 1
+
+	return x * power(x, n - 1)
+
+Complexitate: T(n) = T(n-1) + Theta(1); T(1) = Theta(1)
+
+Aplicam metoda iterativa:
+T(n) = T(n-1) + Theta(1)
+T(n-1) = T(n-2) + Theta(1)
+T(n-2) = T(n-3) + Theta(1)
+...
+T(2) = T(1) + Theta(1)
+T(1) = Theta(1)
+-------------------------- ( dupa simplificari)
+T(n) = Theta(1) * n
+T(n) = Theta(n)
+
+c)
+power(x, n)
+	if (n == 0)
+		return 1
+
+	int aux = power(x, n/2)
+
+	int result = aux * aux;
+
+	if (n % 2 != 0)
+		result *= x;
+
+	return result;
+
+Complexitate: T(n) = T(n/2) + Theta(1); T(1) = Theta(1)
+
+Aplicam Teorema Master:
+a = 1
+b = 2
+
+n^(log_2(1)) = n ^ 0 = 1
+f(n) = Theta(1)
+
+Recunoastem cazul 2:
+f(n) apartine Theta(n^(log_2(1))*log^0(n)), deci k = 0
+
+=> T(n) apartine Theta(n^(log_2(1))*log^(0+1)(n)), deci T(n) apartine Theta(log(n))
+
+
+2.
+a)
+fib(n)
+	if (n < 2)
+		return n
+
+	return fib(n-1) + fib(n-2)
+
+Complexitate: T(n) = T(n-1) + T(n-2) + Theta(1); T(1) = Theta(1)
+
+Marginim inferior recurenta cu:
+T(n) = 2 * T(n-2) + Theta(1)
+
+Rezolvam cu metoda iterativa:
+T(n) = 2 * T(n-2) + Theta(1)
+2 * T(n-2) = 2^2 * T(n-4) + 2 * Theta(1)
+2^2 * T(n-4) = 2^3 * T(n-6) + 2^2 * Theta(1)
+....
+2^(h-1) * T(n-2*(h-1)) = 2^h * T (n - 2*h) + 2^(h-1) * Theta(1)
+2^h * T(n - 2*h) = 2^h * Theta(1); unde n - 2 * h = 1
+
+deci 2*h = n-1; h = (n-1)/2;
+____________________________________
+T(n) =  Theta(1) * (1 + 2 + 2^2 + ... + 2^(h))
+T(n) =	Theta(1) * (2^(h+1) - 1)/(2-1)
+
+Inlocuim h functie de n:
+T(n) = Theta(1) * (2^((n-1)/2 + 1) - 1)
+T(n) = Theta(1) * (2* 2^(n/2)/2^(1/2) - 1)
+T(n) = Theta(1) * (sqrt(2) * 2^(n/2) - 1) => T(n) apartine Theta(2^(0.5*n)) (1)
+
+Marginim superior recurenta cu:
+T(n) = 2 * T(n-1) + Theta(1)
+
+Similar:
+T(n) = 2 * T(n-1) + Theta(1)
+2 * T(n-1) = 2^2 * T(n-2) + 2 * Theta(1)
+2^2 * T (n-2) = 2^3 * T(n-3) + 2^2 * Theta(1)
+.....
+2^(h-1) * T(n-(h - 1)) = 2^(h)*T(n-h)) + 2^(h-1) * Theta(1)
+2^(h) * T(n-h) = 2^(h) * Theta(1) ; unde n - h = 1 => h = n - 1
+______________________________________
+T(n) = Theta(1) * (1 + 2 + ... + 2^(h))
+     = Theta(1) * (2^(h+1) - 1)/(2 - 1)
+     = Theta(1) * (2^n - 1) => T(n) apartine Theta(2^n) (2)
+
+Din (1) si (2) => T(n) are complexitatea exponentiala cel putin 2^(0.5*n)
+
+
+b)
+fib(n)
+	if (n == 0)
+		return 0
+	else if (n == 1)
+		return 1
+
+	first = 0
+	second = 1
+	
+	n -= 2		// pentru ca primele 2 numere sunt returnate la inceput
+
+	for (i = 0; i <= n; i++)
+		aux = first + second
+		first = second
+		second = aux
+
+	return second
+
+Complexitate: Theta(n), din aceleasi considerente ca ale exercitiului 1 a) +
+	operatiile constante din inceputul functiei

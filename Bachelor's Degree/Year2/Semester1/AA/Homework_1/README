@@ -1,0 +1,78 @@
+Student: Petruc Rares
+Grupa: 322CD
+
+Etapa 2:
+
+readWriteToFile.cpp: 
+	Acest fisier contine functiile necesare citirii si scrierii unor fisiere
+de tip txt, respectiv bmp.
+
+Huffman.cpp:
+	Contine functiile necesare implementarii Huffman coding/decoding.
+
+LZW.cpp:
+	Contine functiile necesare implementarii LZW coding/decoding.
+
+tester.cpp:
+	Contine main-ul programului, de unde puteti rula exemplele din in.
+
+in:
+	Acest director contine 4 fisiere de tip txt si 4 de tip bmp. Am vrut sa
+realizez o analogie intre performantele obtinute pe fisierele text si pe cele 
+imagine, astfel am ales de la test0.txt pana la test3.txt texte tot mai complexe
+(de la acelasi caracter repetat de multe ori la text repetitiv si pana la text
+foarte divers), iar in cadrul imaginilor, de la test4.bmp pana la test7.bmp 
+am mers pe aceeasi idee (de la o imagine ce contine o singura culoare pana la
+o imagine in dungi ce respecta un pattern de repetitie, o imagine simetrica si
+chiar o imagine mai diversa).
+
+Makefile:
+	reguli importante:
+		build_final: compileaza executabilul final in tester.
+
+		run_tests: apeleaza script.sh pentru a verifica toate testele deodata.
+		
+		clean: curata fisierele cu extensia .o si continutul folderelor comprimate, decomprimate din out.
+	
+
+./script.sh:
+	Acesta este scriptul ce ia toate testele din in si ruleaza ./tester pe ele cu amandoi algoritmii (Huffman si LZW).
+
+
+Mentiuni:
+- Am vrut ca pentru o observare a efectelor comprimarii fisierelor pe cei doi
+algoritmi sa pastrez cate un folder de comprimare/decomprimare pentru fiecare
+algoritm. Astfel, in folderul out se afla aceste foldere, iar in urma rularii
+scriptului script.sh, sau a regulii run din Makefile vor fi generate fisierele
+comprimate si decomprimate cu algoritmii precizati. Pentru verificarea
+corectitudinii acestora se poate rula pe linux comanda diff -q.
+(ex: diff -q in/ out/decompressedHuff), asta pentru decomprimare, cat pentru
+comprimare se poate da un ls -l, fie pe compressedHuff, fie pe compressedLZW
+si se poate observa dimensiunea comprimata a fisierelor din in.
+
+
+- Tin sa mentionez ca desi test2.txt pare ca nu are utilitate practica, vreau sa va reamintesc despre jocurile ce adopta ultimate safe chat, adica un chat restrictioant la o lista de fraze/cuvinte, din care pot alege utilizatorii pentru a comunica. Astfel, pentru a comprima dimensiunea logurilor ce privesc chatul, se poate folosi un algoritm gen LZW, ce realizeaza o treaba foarte buna pe text repetitiv.
+
+
+Resurse cod:
+https://elcharolin.wordpress.com/2018/11/28/read-and-write-bmp-files-in-c-c/ pentru readWriteToFile
+
+https://www.techiedelight.com/huffman-coding/ pentru Huffman
+
+https://www.geeksforgeeks.org/lzw-lempel-ziv-welch-compression-technique/ pentru LZW
+
+
+Resurse text si imagini folosite:
+https://vignette2.wikia.nocookie.net/math/images/5/5f/Chimie-Anorganica.pdf/revision/latest?cb=20150821190616&path-prefix=ro pentru textul de chimie din test3.txt
+
+https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf pentru textul de inteligenta artificala din test3.txt
+
+https://www.agir.ro/buletine/2963.pdf pentru partea de hidromecanica din test3.txt
+
+https://www.google.com/search?q=red+image&client=ubuntu&hs=VyP&channel=fs&sxsrf=ALeKk026uPvkOwHnJo49Pmnv1AVqkKK9Yg:1606337580725&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjVpI3nyZ7tAhUhposKHZmCCEgQ_AUoAXoECAMQAw&biw=1294&bih=562#imgrc=mTml3rJChpcJMM poza rosie din test4.bmp
+
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freevector.com%2Fvertical-stripes-seamless-vector&psig=AOvVaw3JiMwgnydRPLbDZS4NitI3&ust=1606424314710000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCNuYjLnu0CFQAAAAAdAAAAABAD pentru poza cu dungi din test5.bmp
+
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F231583605810098480%2F&psig=AOvVaw3cKVD2S4s_XKk-rdlgrFs7&ust=1606424371114000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJC256PLnu0CFQAAAAAdAAAAABAD pentru imaginea simetrica din test6.bmp
+
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fafremov.com%2Fcolorful-night-palette-knife-oil-painting-on-canvas-by-leonid-afremov-size-32-x40.html&psig=AOvVaw0Ndm7S_hyLIrf3pbW1pziC&ust=1606424429899000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjg477Lnu0CFQAAAAAdAAAAABAD pentru imaginea colorata din test7.bmp

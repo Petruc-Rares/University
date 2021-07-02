@@ -1,0 +1,7 @@
+#lang racket
+(define (function nr)
+  (if (= nr 0)
+      1
+      (* (function (nr - 1)) nr)))
+
+(function 4)

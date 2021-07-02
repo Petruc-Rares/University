@@ -1,0 +1,81 @@
+322CD Petruc Rares Lab3
+
+1)
+"aabd bc cb" => a apare de 2 ori
+		b apare de 3 ori
+		c apare de 2 ori
+		d apare 1 data
+		" " apare de 2 ori
+
+p(a) = p(c) = p(" ") = 2/10 = 0.2
+p(b) = 3/10 = 0.3
+p(d) = 1/10 = 0.1
+
+p(a) p(c) p(" ") p(b) p(d) 
+
+mai intai alegem d si " "/a/c. Vom alege " ", pentru ca apare primul in ordinea
+				din tabelul ASCII
+
+		                          p(" "+d)=0.3
+                                     /  \
+p(a)=0.2 p(c)=0.2 p(b)=0.3  p(" ")=0.2  p(d)=0.1
+
+
+alegem c si a
+
+	   p(a+c)=0.4                     p(" "+d)=0.3
+	  /       \                         /      \
+    p(a)=0.2   p(c)=0.2  p(b)=0.3   p(" ")=0.2 p(d)=0.1
+
+alegem (" " + d) si b
+                          p(b+" "+d)=0.6
+			             /         \
+	  p(a+c)=0.4     p(b)=0.3    p(" " + d)=0.3
+         /    \                      /      \
+    p(a)=0.2  p(c)=0.2          p(" ")=0.2  p(d)=0.1
+
+alegem (a + c) si (b + " " + d)
+
+			             root
+	           /	                     \
+        p(a+c)=0.4                   p(b+" "+d)=0.6
+	   /      \		                    /         \
+     p(a)=0.2 p(c)=0.2	             p(b)=0.3    p(" " + d)=0.3
+                                                    /      \
+                                              p(" ")=0.2  p(d)=0.1
+
+
+Codificare:
+	a=00;
+	c=01
+	b=10;
+	" "=110;
+	d=111
+
+	"aabd bc cb" => 00 00 10 111 110 10 01 110 01 10 => 23 biti
+
+p(a)=p(c)=p(" ")=0.2; p(b)=0.3; p(d)=0.1
+
+Cost(A) = 2 * 0.2 +  2 * 0.2 + 3 * 0.2 +  2 * 0.3 + 3 * 0.1
+Cost(A)	= 0.4 + 0.4 + 0.6 + 0.6 + 0.3
+Cost(A)	= 2.3 biti
+
+3)
+   s=(10, 11, 12, 14, 16, 17)
+   t=(11, 13, 13, 18, 17, 19)
+
+   Sortam ambii vectori dupa timpul de terminare
+si astfel obtinem:
+	s=(10, 11, 12, 16, 14, 17)
+	t=(11, 13, 13, 17, 18, 19)
+
+
+luam primul interval (10, 11) => end = 11
+luam al doilea interval (11, 13), intrucat 11 >= 11 => end = 13
+nu putem lua (12, 13) intrucat 12 >= 13 (fals)
+deci luam urmatorul interval care se termina cel mai devreme (16, 17), intrucat 16 >= 13 => end = 16
+nu putem lua (14, 18) intrucat 14 >= 16 (fals)
+ne ramane un singur interval care se continua perfect: (17, 19) => end = 19
+
+=> deci avem maxim 4 spectacole care se pot desfasura fara sa se suprapuna si anume
+{(10, 11), {11, 13}, (16, 17), (17, 19)}

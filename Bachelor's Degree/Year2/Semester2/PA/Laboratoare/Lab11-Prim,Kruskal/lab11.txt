@@ -1,0 +1,181 @@
+Ex. 1:
+
+A = {}
+
+d[A..L] = INF;
+p[A..L] = null;
+
+d[I] = 0
+Q = {I, ...};
+
+1)
+    u = I;
+    A = {I, null}.
+    d[J] = 5, p[J] = I.
+    d[A] = 3, p[A] = I.
+    d[L] = 8, p[L] = I.
+
+    Q = {A(3), J(5), L(8), B(Inf), C(Inf), D(Inf), E(inf), F(inf), G(inf), H(inf), K(inf)}
+
+2)
+    u = A;
+    A = {{A, I}, {I, null}}
+    d[B] = 9, p[B] = A
+    d[H] = 6, p[H] = A
+    d[G] = 10, p[G] = A
+
+    Q = {J(5), H(6), L(8), B(9), G(10), C(Inf), D(Inf), E(inf), F(inf), K(inf)}
+
+3)
+    u = J;
+    A = {{J, I}, {A, I}, {I, null}}
+    d[K] = 14, p[K] = J
+
+    Q = {H(6), L(8), B(9), G(10), K(14), C(Inf), D(Inf), E(inf), F(inf)}
+
+4)
+    u = H;
+    A = {{H, A}, {J, I}, {A, I}, {I, null}}
+
+    Actualizam d pentru G
+    d[G] = 4, p[G] = H
+    Q = {G(4), L(8), B(9), K(14), C(Inf), D(Inf), E(inf), F(inf)}
+
+5)
+    u = G
+    A = {{G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+
+    Q = {L(8), B(9), K(14), C(Inf), D(Inf), E(inf), F(inf)}
+
+6)
+    u = L 
+    A = {{L, I}, {G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+
+    Actualizam d pentru K
+    d[K] = 7, p[K] = L 
+
+    Q = {K(7), B(9), C(Inf), D(Inf), E(inf), F(inf)}
+
+7)
+    u = K
+    A = {{K, L}, {L, I}, {G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+
+    Q = {B(9), C(Inf), D(Inf), E(inf), F(inf)}
+
+8)
+    u = B
+    A = {{B, A}, {K, L}, {L, I}, {G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+
+    d[C] = 5, p[C] = B
+
+    Q = {C(5), D(Inf), E(inf), F(inf)}
+
+9)
+    u = C
+    A = {{C, B}, {B, A}, {K, L}, {L, I}, {G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+
+    d[D] = 8, p[D] = C
+    d[E] = 12, p[E] = C
+
+    Q = {D(8), E(12), F(inf)}
+
+10)
+    u = D
+    A = {{D, C}, {C, B}, {B, A}, {K, L}, {L, I}, {G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+
+    d[F] = 9, p[F] = D
+
+    Q = {F(9), E(12)}
+
+11)
+    u = F
+    A = {{F, D}, {D, C}, {C, B}, {B, A}, {K, L}, {L, I}, {G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+
+    d[E] = 2, p[E] = F
+
+    Q = {E(2)}
+
+12)
+    u = E
+    A = {{E, F}, {F, D}, {D, C}, {C, B}, {B, A}, {K, L}, {L, I}, {G, H}, {H, A}, {J, I}, {A, I}, {I, null}}
+    
+    A = {{E, F}, {F, D}, {D, C}, {C, B}, {B, A}, {K, L}, {L, I}, {G, H}, {H, A}, {J, I}, {A, I}}
+
+Ex. 2:
+    A = {}
+    E-F 2
+    A-I 3
+    G-H 4
+    B-C 5
+    I-J 5
+    A-H 6
+    K-L 7
+    I-L 8
+    C-D 8
+    A-B 9
+    D-F 9
+    A-G 10
+    B-G 11
+    C-E 12
+    J-K 14
+
+1)
+    Alegem E-F
+    A = {(E, F)}
+
+2)
+    Alegem A-I
+    A = {(E, F), (A, I)}
+3)
+    Alegem G-H
+    A = {(E, F), (G, H), (B, C), (A, I)}
+
+4) 
+    Alegem B-C
+    A = {(E, F), (B, C), (A, I)}
+
+5)
+    Alegem I-J
+    A  = {(E, F), (I, J), (G, H), (B, C), (A, I)}
+
+6)
+    Alegem A-H
+    A = {(E, F), (A, H), (I, J), (G, H), (B, C), (A, I)},
+
+7)
+    Alegem K-L 
+    A = {(E, F), (K, L), {A, H}, (I, J), (G, H), (B, C), (A, I)}
+
+8)
+    Alegem I-L 
+    A = {(E, F), (I, L), (K, L), {A, H}, (I, J), (G, H), (B, C), (A, I)}
+
+9)
+    Alegem C-D
+    A = {(E, F), (C, D), (A, B), (I, L), (K, L), {A, H}, (I, J), (G, H), (B, C), (A, I)}
+
+10)
+    Alegem A-B
+    A = {(E, F), (A, B), (I, L), (K, L), {A, H}, (I, J), (G, H), (B, C), (A, I)}
+
+11)
+    Alegem D-F
+    A = {(E, F), (D, F), (C, D), (A, B), (I, L), (K, L), {A, H}, (I, J), (G, H), (B, C), (A, I)}
+
+12)
+    Alegem A-G
+    CICLU
+
+13)
+    Alegem B-G 
+    CICLU
+
+14)
+    Alegem C-E 
+    CICLU 
+
+15) Alegem J-K
+    CICLU
+
+    A = {(E, F), (D, F), (C, D), (A, B), (I, L), (K, L), {A, H}, (I, J), (G, H), (B, C), (A, I)}
+

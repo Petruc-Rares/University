@@ -1,0 +1,199 @@
+#ifndef _HELPERS_H
+#define _HELPERS_H 1
+
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define BUFLEN		1024	// dimensiunea maxima a calupului de date
+#define MAX_CLIENTS	5	// numarul maxim de clienti in asteptare
+
+typedef struct Info Info;
+typedef struct Node Node;
+typedef struct packetFromClient packetFromClient;
+typedef struct packetFromServer packetFromServer;
+typedef struct game game;
+
+struct packetFromServer {
+    char message[BUFLEN];
+    char table[3][3];
+};
+
+
+struct packetFromClient {
+    char idxRow;
+    char idxCol;
+};
+
+struct Info {
+    int sockfd_player1;
+    int sockfd_player2;
+    // will be used to decide who can make the
+    // turn
+    int sockfd_crtPlayer;
+    char table[3][3];
+};
+
+struct Node {
+    Info content;
+    Node *next;
+};
+
+void addFrontNode(Node **list, Node *node) {
+    if ((*list)== NULL) {
+        (*list) = node;
+        return;
+    }
+    node->next = (*list);
+    (*list) = node;
+
+    return;
+}
+
+Node *findPlayerBySocket(Node *listGames, int sock_player) {
+    while (listGames) {
+        if ((listGames->content.sockfd_player1 == sock_player) || 
+        (listGames->content.sockfd_player2 == sock_player)) {
+            return listGames;
+        }
+        listGames = listGames->next;
+    }
+    return NULL;
+}
+
+void deleteNode(Node **list, Node *node) {
+    Node *pointerList = *list;
+
+    // if list is empty, there is nothing
+    // to delete
+    if (pointerList == NULL) {
+        return;
+    }
+
+    Node *prev = NULL;
+    Node *it = pointerList;
+    while (it != NULL) {
+        if (it == node) {
+            break;
+        }
+        prev = it;
+        it = it->next;
+    }
+
+    // element @node was not found
+    if (it == NULL) return;
+
+    // element @node is first
+    if (prev == NULL) {
+        (*list) = (*list)->next;
+        // if it was the single elem
+        free(node);
+        return;
+    }
+
+    // element @node is not first elem
+    // or is last
+    prev->next = it->next;
+    free(node);
+    return;
+
+}
+
+Node *createNode(Info info) {
+    Node *newNode = malloc(sizeof(Node));
+    newNode->content = info;
+    newNode->next = NULL;
+
+    return newNode;
+}
+
+void printList(Node *list) {
+    Node *it = list;
+    while (it != NULL) {
+        //printf("%d ", it->content.id);
+        it = it->next;
+    }
+    printf("\n\n");
+
+    return;
+}
+
+/*
+ * Macro de verificare a erorilor
+ * Exemplu:
+ *     int fd = open(file_name, O_RDONLY);
+ *     DIE(fd == -1, "open failed");
+ */
+
+#define DIE(assertion, call_description)	\
+	do {									\
+		if (assertion) {					\
+			fprintf(stderr, "(%s, %d): ",	\
+					__FILE__, __LINE__);	\
+			perror(call_description);		\
+			exit(EXIT_FAILURE);				\
+		}									\
+	} while(0)
+
+int sendBuffer(int sockfd, char *buffer, int sizeBuffer) {
+    int bytes_sent = 0;
+    int bytes_remaining = sizeBuffer;
+    
+    while (bytes_remaining > 0) {
+        bytes_sent = send(sockfd, buffer + bytes_sent, sizeBuffer, 0);
+
+        printf("No of sent bytes: %d\n", bytes_sent);
+
+        DIE(bytes_sent < 0, "ERROR in sending bytes");
+
+        if (bytes_sent == 0) {
+            break;
+        }
+
+        bytes_remaining -= bytes_sent;
+    }
+
+    return bytes_sent;
+}
+
+int sizeList(Node *list) {
+    int contor = 0;
+    while (list) {
+        contor++;
+        list = list->next;
+    }
+    return contor;
+}
+
+int receiveBuffer(int sockfd, char *buffer, int sizeBuffer) {
+    //memset(buffer, 0, sizeBuffer);
+
+    int bytes_recvd = 0;
+    int bytes_remaining = sizeBuffer;
+    
+    while (bytes_remaining > 0) {
+        bytes_recvd = recv(sockfd, buffer + bytes_recvd, sizeBuffer, 0);
+
+        printf("No of received bytes: %d\n", bytes_recvd);
+
+        DIE(bytes_recvd < 0, "ERROR in receiving bytes");
+
+        if (bytes_recvd == 0) {
+            break;
+        }
+
+        bytes_remaining -= bytes_recvd;
+    }
+
+    return bytes_recvd;
+}
+
+#endif

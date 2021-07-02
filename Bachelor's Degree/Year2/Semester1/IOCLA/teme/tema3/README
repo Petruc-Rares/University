@@ -1,0 +1,79 @@
+322 CD
+PETRUC RARES
+
+									-	TEMA 3 IOCLA	-
+
+
+	Detalii de implementare pentru:
+
+		- functia iocla_atoi:
+
+			* mai intai am verificat daca primul caracter din sirul primit ca
+			parametru este "-", pentru a putea generaliza problema parcurgerii
+			sirului (sa nu am cod duplicat, pentru cazul numerelor pozitive,
+			respectiv negative)
+
+			* am parcurs sirul primit ca parametru pentru a transforma pe rand
+			fiecare caracter in echivalentul lui, cifra in baza 10 si a forma
+			numarul dupa regula: numar_nou = numar_vechi * 10 + cifra_curenta
+
+			* in final, am verificat daca flagul de minus este setat, pentru a
+			ma decide daca mai inmultesc numarul format in bucla cu "-" sau nu
+
+
+		- functia create_tree:
+
+			* am parcurs fiecare simbol din cadrul sirului primit ca input si
+			am realizat operatiile corespunzatoare pentru fiecare in parte dupa
+			caz (simbolul putea fi un numar sau un operand)
+
+			* am gandit urmatorul pseudocod:
+			pentru fiecare simbol din sirul de input
+			daca (simbolul e operand)
+				push stack, simbol
+				increase stack_size
+			altfel daca (simbolul e numar)
+				operand = pop stack
+				decrease stack_size
+				daca (operand -> st == null)
+					operand->st = simbol
+					push operand
+				altfel daca (operand -> dr = null)
+					operand->dr = simbol
+					daca (stack_size == 0)
+						// s-a terminat constructia arborelui
+					do {
+						operand_tata = pop stiva
+						decrement stack_size
+						daca (operand_tata -> st == null )
+							operand_tata->st = operand
+							push operand_tata
+							increse stack_size
+						altfel daca (operand_tata -> dr == null)
+							operand_tata->dr = operand
+							daca (stack_size == 0)
+								// s-a terminat constructia arborelui
+
+					} cat timp (stack_size != 0) && (operand_tata nu are fiul dreapta ocupat)
+
+			,pe care l-am implementat in limbaj assembly
+
+
+
+	Dificultati:
+
+		- initial, am gasit un algoritm comun pe net, ce parcurgea sirul
+		de la coada la cap, insa am primit mai multe erori legate de alocarea
+		sirului in care am incercat sa tin elementele in ordine inversa, asa
+		ca am regandit algoritmul de unul singur;
+
+		- am stat destul de mult timp pana mi-am dat seama de utilitatea functiei
+		strdup, nu imi dadeam seama ca pointerul schimba zona referentiata din
+		cauza parcurgerii sirului cu strtok (obtineam un arbore ce avea in fiecare
+		nod acelasi simbol).
+
+	Concluzii/Feedback:
+
+		A fost o tema medie spre grea dupa parerea mea, insa care te trece
+		prin ceva materie si iti deschide cateva perspective noi legate de
+		cum arata lucrurile in memoria calculatorului.

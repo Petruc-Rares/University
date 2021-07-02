@@ -1,0 +1,4 @@
+Starting audit...
+[ERROR] D:\Urcare_Github\Bachelor's Degree\Year2\Semester1\POO\Tema_1_POO-main\teme\tema1\Tema-POO-2020\.\src\newfileio\MovieData.java:108:36: Parameter noRatings should be final. [FinalParameters]
+Audit done.
+Checkstyle ends with 1 errors.

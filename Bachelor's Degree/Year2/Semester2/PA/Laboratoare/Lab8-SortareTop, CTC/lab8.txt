@@ -1,0 +1,272 @@
+PETRUC RARES
+LAB8 PA - Sortare topologica si CTC
+
+1. 
+A: B, D, G
+B: G
+C: -
+D: E
+E: -
+F: E
+G: C
+
+sortare topologica:
+a) ordine alfabetica:
+LIST = {}
+c(A) = gri, d(A) = 1
+c(B) = gri, d(B) = 2
+c(G) = gri, d(G) = 3
+c(C) = gri, d(C) = 4
+c(C) = negru, f(C) = 5
+LIST = {C}
+c(G) = negru, f(G) = 6
+LIST = {G, C}
+c(B) = negru, f(B) = 7
+LIST = {B, G, C}
+c(D) = gri, d(D) = 8
+c(E) = gri, d(E) = 9
+c(E) = negru, f(E) = 10
+LIST = {E, B, G, C}
+c(D) = negru, f(D) = 11
+LIST = {D, E, B, G, C}
+c(A) = negru, f(A) = 12
+LIST = {A, D, E, B, G, C}
+c(F) = gri, d(F) = 13
+c(F) = negru, f(F) = 14
+LIST = {F, A, D, E, B, G, C}
+
+A(1, 12)
+B(2, 7)
+C(4, 5)
+D(8, 11)
+E(9, 10)
+F(13, 14)
+G(3, 6)
+
+
+A: B, D, G
+B: G
+C: -
+D: E
+E: -
+F: E
+G: C
+
+b) ordine invers-alfabetica:
+LIST= {}
+c(G) = gri, d(G) = 1
+c(C) = gri, d(C) = 2
+c(C) = negru, f(C) = 3
+LIST = {C}
+c(G) = negru, f(G) = 4
+LIST = {G, C}
+c(F) = gri, d(F) = 5
+c(E) = gri, d(E) = 6
+c(E) = negru, f(E) = 7
+LIST = {E, G, C}
+c(F) = negru, f(F) = 8
+LIST = {F, E, G, C}
+c(D) = gri, d(D) = 9
+c(D) = negru, f(D) = 10
+LIST = {D, F, E, G, C}
+c(B) = gri, d(B) = 11
+c(B) = negru, f(B) = 12
+LIST = {B, D, F, E, G, C}
+c(A) = gri, d(A) = 13
+c(A) = negru, f(A) = 14
+LIST = {A, B, D, F, E, G, C}
+
+
+A(13, 14)
+B(11, 12)
+C(2, 3)
+D(9, 10)
+E(6, 7)
+F(5, 8)
+G(1, 4)
+
+2.
+A: B, G
+B: C, G
+C: E
+D: C, F
+E: D
+F: -
+G: H
+H: -
+I: A, J, L
+J: K
+K: I, M
+L: K
+M: N
+N: O
+O: M, P
+P: -
+
+c(A) = gri, d(A) = 1
+c(B) = gri, d(B) = 2
+c(C) = gri, d(C) = 3
+c(E) = gri, d(E) = 4
+c(D) = gri, d(D) = 5
+c(F) = gri, d(F) = 6
+c(F) = negru, f(F) = 7
+c(D) = negru, f(D) = 8
+c(E) = negru, f(E) = 9
+c(C) = negru, f(C) = 10
+c(G) = gri, d(G) = 11
+c(H) = gri, d(H) = 12
+c(H) = negru, f(H) = 13
+c(G) = negru, f(G) = 14
+c(B) = negru, f(B) = 15
+c(A) = negru, f(A) = 16
+c(I) = gri, d(I) = 17
+c(J) = gri, d(J) = 18
+c(K) = gri, d(K) = 19
+c(M) = gri, d(M) = 20
+c(N) = gri, d(N) = 21
+c(O) = gri, d(O) = 22
+c(P) = gri, d(P) = 23
+c(P) = negru, f(P) = 24
+c(O) = negru, f(O) = 25
+c(N) = negru, f(N) = 26
+c(M) = negru, f(M) = 27
+c(K) = negru, f(K) = 28
+c(J) = negru, f(J) = 29
+c(L) = gri, d(L) = 30
+c(L) = negru, f(L) = 31
+c(I) = negru, f(I) = 32
+
+A(1, 16)
+B(2, 15)
+C(3, 10)
+D(5, 8)
+E(4, 9)
+F(6, 7)
+G(11, 14)
+H(12, 13)
+I(17, 32)
+J(18, 29)
+K(19, 28)
+L(30, 31)
+M(20, 27)
+N(21, 26)
+O(22, 25)
+P(23, 24)
+
+Sortate descr dupa timp:
+I(17, 32)
+L(30, 31)
+J(18, 29)
+K(19, 28)
+M(20, 27)
+N(21, 26)
+O(22, 25)
+P(23, 24)
+A(1, 16)
+B(2, 15)
+G(11, 14)
+H(12, 13)
+C(3, 10)
+E(4, 9)
+D(5, 8)
+F(6, 7)
+
+Transpunem graful in G'(V, E')
+G':
+A: I
+B: A
+C: B, D
+D: E
+E: C
+F: D
+G: A, B
+H: G
+I: K
+J: I
+K: L, J
+L: I
+M: K, O
+N: M
+O: N
+P: O
+
+c(I) = gri, d(I) = 1
+c(K) = gri, d(K) = 2
+c(L) = gri, d(L) = 3
+c(L) = negru, f(L) = 4
+c(J) = gri, d(J) = 5
+c(J) = negru, f(J) = 6
+c(K) = negru, f(K) = 7
+c(I) = negru, f(I) = 8
+
+{I, L, J, K} - primul CTC
+
+c(M) = gri, d(M) = 9
+c(O) = gri, d(O) = 10
+c(N) = gri, d(N) = 11
+c(N) = negru, f(N) = 12
+c(O) = negru, f(O) = 13
+c(M) = negru, f(M) = 14
+
+{M, N, O} - al doilea CTC
+
+c(P) = gri, d(P) = 15
+c(P) = negru, f(P) = 16
+
+{P} - al treilea CTC
+
+c(A) = gri, d(A) = 17
+c(A) = negru, f(A) = 18
+
+{A} - al patrulea CTC
+
+c(B) = gri, f(B) = 19
+c(B) = negru, f(B) = 20
+{B} - al cincilea CTC
+
+c(G) = gri, d(G) = 21
+c(G) = negru, f(G) = 22
+{G} - al saselea CTC
+
+c(H) = gri, d(H) = 23
+c(H) = negru, f(H) = 24
+{H} - al saptelea CTC
+
+c(C) = gri, d(C) = 25
+c(D) = gri, d(D) = 26
+c(E) = gri, d(E) = 27
+c(E) = negru, f(E) = 28
+c(D) = negru, f(D) = 29
+c(C) = negru, f(C) = 30
+{C, E, D} - al optulea CTC
+
+c(F) = gri, d(F) = 31
+c(F) = negru, f(F) = 32
+{F} - al noulea CTC
+
+A(17, 18)
+B(19, 20)
+C(25, 30)
+D(26, 29)
+E(27, 28)
+F(31, 32)
+G(21, 22)
+H(23, 24)
+I(1, 8)
+J(5, 6)
+K(2, 7)
+L(3, 4)
+M(9, 14)
+N(11, 12)
+O(10, 13)
+P(15, 16)
+
+{I, L, J, K}
+{M, N, O}
+{P}
+{A}
+{B}
+{G}
+{H}
+{C, E, D}
+{F}

@@ -1,0 +1,56 @@
+322CD, Petruc Rares
+Tema1 PA
+
+Crypto:
+    Am inceput prin a sorta calculatoarele in ordine crescatoare dupa puterea
+de minare, respectiv in caz de egalitate, descrescator dupa pret, asta pentru
+ca la alegerea unui calculator, sa fie ales cel mai scump dintre cele ce produc
+putin, putand ajunge mai rapid la un posibil break generat de pretul ridicat al
+tuturor calculatoarelor ce au productie minima. Am iterat prin toate
+calculatoarele ce au productia minima pana cand am ajuns la ultimul, si am
+retinut pretul necesar updateurilor tuturor calculatoarelor de pana atunci.
+Am facut updateuri pana cand se ajungea la putere egala cu a calculatorului
+cel mai slab urmator din lista, iar dupa am continuat procesul identic cu cel
+explicat pentru calculatoarele cu productie minima, luand in considerare, evident,
+si calculatoarele de pana acum. Complexitatea este O(n), intrucat se va trece
+prin maxim toate calculatoarele din lista, de cateva ori prin fiecare din calculatoarele
+cu aceeasi capacitate de productie. Pentru optimizare, am verificat daca se poate
+ajunge vreodata la urmatoarea capacitate de productie minima, iar in caz negativ,
+am calculat updateul maxim ce poate fi facut, returnand rezultatul aferent
+dupa actualizare.
+
+Stocks:
+   Partea cheie din enunt ce m-a ghidat catre rezolvarea cu algoritmul pentru
+problema rusacului 0/1 cu doua constrangeri a fost partea cu "se pot cumpara doar 
+unitati intregi". Am ales sa fie maximizat profitul, verficand
+daca mai e loc in "rucsac" de pierderi mai mici decat L si loc pentru a face alte
+achizitii, mai mici decat bugetul maxim, B. Complexitatea temporala,
+cat si spatiala este O(N*B*L).
+
+Valley:
+    Am observat ca pentru a face o vale, este nevoie de elementul minim, pentru
+a sti cam care e zona ce urmeaza a fi "uniformizata". Ulterior,
+am iterat prin vector de la stanga odata (elementele ce trebuie sa fie descrescatoare)
+si am verificat daca exista 2 varfuri consecutive, din care al doilea sa fie mai inalt
+decat primul, iar in caz afirmativ, l-am decrementat pe al doilea cu diferenta dintre
+inaltimile lor pentru a asigura ordinea descrescatoare in partea stanga a varfului
+minim.  Dupa, am facut similar si pentru elementele din dreapta minimului, asigurand
+ordine crescatoare a varfurilor. Complexitatea este un O(N) pentru cautarea minimului si
+un O(N) pentru asigurarea conditiei de vale (descrescator la stanga minimului, respectiv
+crescator la dreapta). Deci in final, complexitatea temporala este O(N).
+
+Ridge:
+    De departe problema cea mai dificila a temei, deoarece nu-mi dadeam seama cum pot
+trata cazuri ca de exemplu sirul: 2 3 3, pentru ca poate prima decrementare a 3-ului +
+o decrementare a 2-ului ar fi fost mai ieftine decat o decrementare a ultimului 3.
+Si am ajuns la concluzia ca avem 3 posibile cazuri pentru varfurile noastre: fie le lasam
+asa cum sunt, fie le scadem cu o unitate sau cu doua. Astfel, am construit o matrice Nx3,
+unde pentru fiecare varf, avem cele 3 cazuri posibile de decrementare si costurile
+asociate decrementarilor + minimul din cazuri compatibile (non-conflictuale legate
+de inaltimi egale) din varful anterior. Abordand problema in asa fel, am ajuns la o
+complexitate spatiala O(N*3) si una temporala de O(N).
+
+
+
+
+

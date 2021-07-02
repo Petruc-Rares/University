@@ -1,0 +1,16 @@
+				METODE NUMERICE
+		   		  - TEMA 2 -
+
+	Cerinta 1
+
+	Am urmarit indeaproape algoritmul prezentat pe pagina de Wikipedia. Pe langa comentariile aduse in cod, simt nevoia sa explic functia 'buildAK'. Astfel pentru fiecare rand din fisierul de input citim numarul paginii si numarul de pagini vecine, elemente urmate de vectorul ce reprezinta paginile catre care se afla legaturi. Am setat range-ul ca fiind linia corespunzatoare numarului paginii curente si coloana pornind de la primul element invecinat (aflat pe coloana 2) pana la ultimul (aflat pe coloana 1 + numarul de pagini vecine). Ulterior, am verificat daca exista pagini care au linkuri catre ele insele si am si retinut numarul acestor tipuri de linkuri. Apoi, am avansat pozitia in fisier cu 2*NrPaginiVec pentru ca am vrut sa sar si peste numarul paginilor vecine, cat si peste spatiul dintre ele. In final, am construit matricele A si K corespunzator.
+
+	Cerinta 2
+
+	La fel ca in prima cerinta, am urmarit referinta de pe pagina de Wikipedia. Prima parte a functiei(pana la calcularea inversei) seamana extrem de mult cu cea de la prima cerinta. In continuare am calculat inversa ce ne interesa printr-o descompunere QR, in urma careia am rezolvat un SST pentru fiecare coloana a matricei cu scopul de a afla inversa acesteia. In final, am aplicat formula pentru calcularea vectorului final de PageRank.
+
+    Cerinta 3
+    
+    M-am folosit de functiile implementate la cerintele anterioare pentru calcularea vectorilor de PageRank R1 si R2. Am sortat vectorul R2 descrescator si am tinut minte indicii corespunzatori fiecarei pagini. Dupa aceea, am calculat apartenenta si am afisat in fisier conform formatului specificat in cerinta.
+    
+    Concluzii: A fost o tema interesanta. Nu ma asteptam sa cunosc asa de repede algoritmul de PageRank si mai mult decat atat, sa-l si implementez. Am intampinat dificultati la sortarea descrescatoare a vectorului R2 de la cerinta 3, intrucat am urmarit sa obtin acelasi rezultat ca un pdf(nu sa se inverseze pagina 6 cu pagina 7 cum se vede in graf1.out), desi am citit pe forum ca nu ar fi o problema.. in orice caz, tema am considerat-o de dificultate medie si cerintele clar formulate.

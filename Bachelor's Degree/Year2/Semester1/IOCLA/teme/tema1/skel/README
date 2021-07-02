@@ -1,0 +1,22 @@
+										TEMA 1 - PRINTF
+										   - IOCLA -
+
+
+    Primul lucru pe care l-am observat a fost ca trebuie sa parcurg sirul
+format pana cand intalnesc simbolul de la un specificator de conversie
+"%", urmand ca mai apoi sa fac discutie pentru cei precizati in enuntul temei.
+Singurul caz care a mai ramas nediscutat fata de cele din enuntul temei este
+"%%", care pus ca argument pentru printf afiseaza %.
+	Pentru fiecare caz in parte am luat argumentul potrivit din lista cu tipul
+corect (mai putin pentru cel de tip char unde nu ma lasa compilatorul sa pun
+altceva in afara de int), unde a fost nevoie am schimbat si formatul din numar
+in string (adica peste tot in afara de cazul "%c" si "%s"), ramanand ca in final
+sa apelez write_stdout si sa calculez numarul de caractere afisate de functia
+iocla_printf corespunzator.
+	Dificultatea am intampinat-o in gasirea unei functii ce schimba formatul din
+int/unsigned int in const char*, insa in final am gasit implementarea functiilor
+itoa si utoa la linkul urmator:
+https://penti.org/~sederlok/misc/lang/c/the_c_programming_language_-_exercises/krx412.html.
+	Timp total luat: 5-6h
+	Nivel de dificultate: usor->mediu
+	Tema interesanta!

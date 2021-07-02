@@ -1,0 +1,37 @@
+PETRUC RARES 312CD rares.petruc
+
+Cerinta tema: https://ocw.cs.pub.ro/courses/programare/teme_2019/tema4_2019_cbd
+
+				            TEMA 4 PC
+		                    - PREGATIRE PENTRU EXAMEN -
+
+TASK 1: Am verificat cu ajutorul a doua foruri daca contorul din primul difera
+      de cel din al doilea, iar in caz afirmativ am realizat inmultirea.
+
+TASK 2: Dupa alocarea matricei rotite, am atribuit fiecarei pozitii a acesteia
+       pozitia corespunzatoare din matricea initiala.
+
+TASK 3: Dupa indelungi analize, am realizat ca se cere un fel de suprafata
+       dintre cele doua coordonate, asa ca am si facut-o. :)
+
+TASK 4: Am implementat structurile cerute.
+
+TASK 5: Am citit si afisat datele corespunzator.
+
+TASK 6: Pentru fiecare sofer, am verificat istoricul curselor, mai exact numarul
+       de stele primite pentru fiecare in parte si ulterior, numarul de curse
+       efectutate (nu anulate sau in curs de desfasurare). Ulterior, am realizat
+       si impartirea ceruta pentru rating-ul mediu al fiecarui sofer, din care 
+       l-am ales pe cel mai mare (max), corespunzator indexului soferului cautat
+       (auxi).
+
+TASK 7: M-am folosit de 2 vectori auxiliari, unul pentru distantele fiecarui 
+      sofer fata de punctul dorit de preluare si unul pentru memorarea indexului
+      soferului. Am lucrat concomitent cu ele, astfel incat la sortarea
+      vectorului de distante, sa nu se modifice doar valorile acestora intre ele
+      ci si a indexilor. In final, am sortat lexicografic dupa numele soferilor,
+      vectorul de structuri cautat.
+
+TASK 8: Am eliberat toata memoria de pe Heap folosita.
+
+?Curiozitati?: Pot sa fac si README-ul in engleza? 						

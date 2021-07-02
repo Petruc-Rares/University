@@ -1,0 +1,27 @@
+
+										TEMA 2 
+									   -IOCLA-
+									   			README
+									   			Petruc Rares-322CD
+
+Ex 1: Am iterat de la "coada la cap" prin edx, respectiv ciphertext in c
+si l-am construit conform cerintei.
+
+Ex 2: Am iterat prin plaintext, iar daca inalnesc o litera mica
+sau mare, o transform folosind regula:
+	CaracterNou = 'a' + (CaracterVechi - 'a' + key) % 26 pentru litere mici
+	CaracterNou = 'A' + (CaracterVechi - 'A' + key) % 26 pentru litere mari
+
+Ex 3: Este exercitiul la care am intampinat cele mai multe dificultati, fiindca am
+primit constant o eroare de tip free(), asa ca am decis sa nu mai extind cheia
+si sa resetez la 0 iteratorul prin cheie atunci cand se trece de lungimea(k.ey)
+prin mesaj, ulterior ramanand sa aplic ce am aplicat si la exercitiul 2.
+
+Ex 4: Am realizat un iterator prin needle, iar in momentul in care iteratorul
+ar fi avut dimensiunea needle-ului, ne opream (inseamna ca s-a parcurs needle-ul
+concomitent si in haystack si in needle).
+
+Ex 5: Am realizat grupuri de octeti si le-am analizat bitii pe rand pana
+cand nu mai raman grupuri (respectiv maxim 3 biti de analizat). Ulterior,
+am aplicat aceeasi analiza si pe bitii ramasi si am mutat rezultatul in hexa in
+edx.

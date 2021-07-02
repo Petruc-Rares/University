@@ -1,0 +1,34 @@
+# Protocoale de comunicatii:
+# Pregatire Test Practic
+# Makefile
+
+CFLAGS = -Wall -g
+
+# Portul pe care asculta serverul (de completat)
+PORT = 60029
+
+# Adresa IP a serverului (de completat)
+IP_SERVER = 127.0.0.1
+
+all: server client
+
+# Compileaza server.c
+server: server.c
+	gcc server.c -o server -lm
+
+# Compileaza client.c
+client: client.c
+	gcc client.c -o client -lm
+
+.PHONY: clean run_server run_client
+
+# Ruleaza serverul
+run_server:
+	./server ${PORT}
+
+# Ruleaza clientul
+run_client:
+	./client ${IP_SERVER} ${PORT}
+
+clean:
+	rm -f server client

@@ -1,0 +1,15 @@
+artificii (se numara descrescator), cand se ajunge la 0, se aprinde un led
+rgb (d-ala cu 4 pini) in mai multe culori. Ar fi misto, dar nu stiu daca se poate
+sa nu avem un if (digit0 == 0) && (digit1 == 0), ci tot ceva pur electric.
+
+In fine, putem zice tot asa ca masuram descrescator si punem cifrele pe un
+hol undeva, ca sa se grabeasca lumea dintr-o cladire sa intre undeva intr-o
+camera sau idk. Sau ca e bun la microunde (dar cam putin maxim 60 de sec),
+putem noi sa facem o chestie de input daca e unde sa introduca utilizatorul
+sa zicem ca vrea sa incalzeasca 130 de sec si sa afisam odata de la 0 la 59,
+alta data de la 0 la 59 si ultima oara de la 0 la 9, sau cat trebuie si sa
+mai avem un ecran LCD sau alt digit separat, care arata in al catalea minut suntem
+
+Putem adauga in document o sectiune: "posibilitati de extindere" si sa scriem,
+daca ne dam seama si noi, cum s-ar putea face unul d-asta practic,
+cu ore si minute (88:88), in formatul asta.

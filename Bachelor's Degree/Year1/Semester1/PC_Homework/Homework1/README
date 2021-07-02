@@ -1,0 +1,24 @@
+// NUME: PETRUC RARES, GRUPA: 312 CD		     
+// USERNAME CS.CURS: rares.petruc
+
+Cerinta tema: https://ocw.cs.pub.ro/courses/programare/teme_2019/tema1_2019_cbd
+
+     TEMA 1: ADRESAREA IPv4 (Durata tema: 12-14h, dintre care 2 pentru CS)
+
+Ce mi-a placut la tema:
+- Tema a reusit sa imbine tot ceea ce ar fi trebuit sa asimilam de la laborator;
+- Tema putea fi rezolvata in moduri diverse (siruri de caractere, structuri, etc);
+
+Ce nu mi-a placut la tema:
+- Task-ul 9 a avut un enunt ambiguu;
+
+Abordari din tema ce pot necesita explicatii sunt urmatoarele:
+1) functiile pentru determinarea octetilor unei masti(O1, O2, O3, O4):
+ - am inceput fiecare functie printr-o initializare a i-ului, corespunzator
+primei puteri a lui 2 din cadrul octetului respectiv;
+ - am redus suma obtinuta (o) la forma unui octet reprezentat in binar prin 
+impartirea la (2 ^ (4 - numar octet)).
+
+2) functia ce determina corectitudinea unei masti (masca):
+ - valoarea 0 pentru ok reprezinta existenta unei alternante de tip 01 intre 2
+biti consecutivi.

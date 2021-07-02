@@ -1,0 +1,23 @@
+				TEMA 3
+			-STRUCTURI DE DATE-
+
+	TASK1
+	
+	In cadrul acestui task, am creat un graf reprezentat cu ajutorul unei liste de adiacenta si l-am completat citind datele din fisierele de input. Am ales fiecarui nume de actor un numar corespondent, cu ajutorul caruia am si rezolvat taskul mai departe.
+	Pentru a observa care este lista cea mai mare, m-am legat de parcurgerea de tip bfs a grafului. Am ales sa realizez bfs de tip nerecursiv, pentru a evita un Stack Overflow, putand fi vorba de foarte multi actori in fisierele de input. Pentru fiecare visited[i] = 0 din functia bfs, se va genera o noua lista continand o componenta conexa a grafului, ulterior verificand care este cea mai lunga.
+	Dupa ce am ajuns cu lista cea mai lunga, am creat un array de pointeri in care am retinut numele actorilor din lista respectiva. Am sortat array-ul cu ajutorul qsort.
+	In final, am printat in fisierul de output in formatul cerut, am dezalocat ultimele structuri de date ramase dezalocate si am inchis fisierele deschise pentru citire, respectiv scriere.
+
+	TASK2
+
+	Primii pasi pe care i-am facut (citirea numarului de filme, crearea grafului) au fost aceiasi ca in cadrul primului task. In plus, am citit si ultimele 2 randuri din fisier, reprezentand numele actorilor intre care ne dorim sa aflam gradul de rudenie.
+	Printr-o functie simpla, am obtinut indexul corespunzator numelui actorului din lista de adiacenta, iar cu ajutorul celor doi indecsi, corespunzatori celor 2 nume, am realizat o parcurgere bfs, incepand de la indexul corespunzator primului actor si oprindu-ma o data ce ajung la indexul corespunzator celui de al doilea actor.
+	Ideea de baza e destul de simpla.. distanta de la nodul de start la vecinii lui e 1, de la nodul de start la vecinii vecinilor este 2 si tot asa. Am avut grija sa actualizez distanta cu 1 a vecinilor nodului curent fata de distanta nodului curent la nodul de start si sa mentin updatat vectorul de vizitari!
+
+	TASK3
+
+	Am urmarit indeaproape algoritmul prezentat in cadrul pdf-ului indrumator. In retinerea numarului de punti si a numelor celor care le formeaza m-am folosit de o structura auxiliara. Am avut grija ca numele unei punti (format din cele doua nume ale actorilor care o formeaza) sa inceapa cu numele celui mai mic din punct de vedere lexicografic, iar ca un ultim pas al algoritmului am sortat toate numele puntilor lexicografic. Ca ultimi pasi, am printat in fisierul de iesire i formatul cerut, am dezalocat memoria pentru ce fusese alocat dinamic si am inchis fisierele deschise pentru citire, respectiv scriere.
+
+	Observatii: Am numerotat pentru similitudinea cu ce era dispus in documentul pdf, reprezentarea sub forma de graf, incepand de la 1. Astfel nu va exista actorul a carui indice sa fie egal cu 0, primul indice atribuit e 1, dupa 2 si tot asa.. in implementare, insa pentru a nu aloca mai multa memorie decat era necesar am preferat sa scad 1 din numarul corespunzator actorului pentru indexari, in loc sa aloc un vector de dimensiune egala cu numarul actorilor + 1 si sa indexez direct (index[1], reprezentand indexul corespunzator primului actor).
+
+	Concluzii: Tema a fost foarte interesanta, mi-a placut ca, desi complexa (nu am primit niciun schelet), a fost foarte bine gandita pentru a nu ne solicita prea mult (majoritatea implementarilor erau fie sugerate in pdf, fie deja intalnite la cursuri/laboratoare). Tema mi-a luat undeva la 24 de ore de lucru intensiv.

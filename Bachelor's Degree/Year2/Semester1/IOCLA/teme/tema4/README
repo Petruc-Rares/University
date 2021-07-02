@@ -1,0 +1,53 @@
+## IOCLA_TEMA_4
+
+## Grupa student: 322CD
+## Nume student: Petruc Rares
+
+## Descrierea taskurilor si a modului de abordare:
+
+nice:
+
+- prima functie apelata din main de la adresa x080492de, citesc mai putin decat
+e alocat, nu suprascriu nimic din ce ar putea determina o functionare gresita a 
+programului, asa ca am decis sa adaug 0x5a (90 in decimal) de A-uri (caractere
+dummy, nefolositoare);
+- a doua functie apelata din main de la adresa x080492f5 are o vulnerabilitate 
+si anume ca se citeste mai mult decat este alocat (si anume 0x18f din cat era 
+alocat, 0x173), astfel se pot suprascrie stack-frameuri importante din stiva 
+(unde pointeaza eip, ebx-uri salvate, argumente, etc.); am observat ca se va
+face call pe eax, in care va fi stocata adresa de la [ebp + 18], pe care am ales
+sa o suprascriu prin ceea ce am citit din fisierul nice_payload. Am suprascris
+ ebp-ul din main cu adresa 08049291, intrucat parea sa fie singura functie ce 
+lucreaza cu acele 
+caractere definite in zona dupa DAT_0804c028, nefiind un sir definit deja ce 
+continea "NICE_FLAG" sau alte indicii. Mai apoi, am realizat, ca in cadrul 
+functiei de la 08049255 nu se facea altceva decat o prelucrare a acelor 
+caractere pentru a se forma flag-ul final.
+
+naughty:
+- pentru primele 3 functii am suprascris stackframeurile aferente pentru ca 
+programul sa nu ajunga sa execute exit(1), iar mai apoi am ales, in mod absolut 
+similar cu exercitiul precedent, sa execut functia cea mai plauzibila care 
+formateaza si afiseaza flagul in formatul dorit. Vulnerabilitatea am gasit-o in 
+functia a 3-a apelata din main, unde zona catre care se facea call putea fi 
+suprascrisa foarte simplu, modificand
+comportamentul dorit al programului (se putea ajunge in orice alta parte din 
+cod, decat sa se revina in main sau in functia din care s-a facut apelul, etc.).
+
+Cum am ajuns sa stiu ce zona suprascriu cu exactitate?
+Am sa iau doar un exemplu, pentru [ebp-0x92], unde trebuia sa se afle o valoare 
+egala cu 0x5a2621a. Nu am facut altceva decat sa fac diferenta intre (ebp-0x92)
+si esp, rezultatul insemnand ca de la esp pana la esp + diferenta 
+obtinuta pot pune orice valoare, urmand ca apoi sa suprascriu cu noua valoare 
+necesara functionarii programului in modul in care mi l-am dorit.
+
+Dificultati: la citire, pana mi-am dat seama ca pot folosi redirectare, am 
+pierdute ore in sir cu gasirea unui mod de a scrie 0xff sau 0x04 folosind 
+tastatura (Ctrl + Shift + U, am parcurs mare parte din documentatia de la 
+unicode, etc.);
+
+Feedback: Tema a fost foarte frumoasa si interesanta, mi-a pus mintea la 
+contributie si a reprezentat un bun factor de a intelege mai bine cum 
+functioneaza stiva de executie a unui program dar si diverse instructiuni din 
+asamblare.
+

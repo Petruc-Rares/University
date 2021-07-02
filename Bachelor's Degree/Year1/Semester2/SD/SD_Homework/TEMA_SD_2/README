@@ -1,0 +1,63 @@
+// Copyright 2020 Petruc Rares (rareson168@gmail.com)
+		
+			TEMA_ARBORI_DE_INTERVALE
+
+	Cuvant inainte: README-ul l-am realizat in sublime(iar la micile desene facute
+			am observat ca arata la fel numai daca fisierul este dechis cu sublime)
+
+	TASK 1:
+
+		Am urmat pseudocodul, in plus adaugand si campuri ca 
+	"arbore->valoare_predifinita_raspuns_copil", "arbore->f_actualizare",
+	etc.
+		Am facut continuu verificari pentru alocari nereusite,
+	eliminand memoria alocata anterior in caz de nereusita.
+
+	TASK 2:
+
+		Calculeaza_numar_intersectii_trivial:
+
+			Am vrut sa tratez un unic caz si anume: intersectie intre un segment 
+		vertical si un segment orizontal. Asta am si facut, ramanand
+		de vazut daca acestea se si intersecteaza cu adevarat:
+
+			Asa am gandit problema din punct de vedere geometric:
+
+
+						|(auxcxd1, auxcyd1)
+						|
+						|
+						|
+						|
+						|
+(cxs2, cys2)			|				(cxd2, cyd2)
+----------------------------------------------------
+						|
+						|
+						|
+						|
+						|
+						|
+						|(auxcxs1, auxcys1)
+
+
+		Calculeaza_numar_intersectii_arbori_de_intervale:
+
+
+			Am ordonat punctele de la capatul din stanga(de unde am pornit
+		si acea dreapta verticala imaginara).
+			Desi nu era ca exemplu in fisierele de input, am considerat un corner
+		case (exemplu fisier input: 2\n 3 3 3 4\n 3 4 4 4), de unde aveam aceste
+		2 segmente: (3, 3) - (3, 4) si (3, 4) - (4, 4), pe care daca le luam
+		in ordine am fi aplicat interogare(actiune corespunzatoare unui segment
+		vertical), iar ulterior actualizare(actiune corespunzatoare unui segment
+		orizontal), iar numarul de intersectii ar fi fost egal cu 0. Prin corner
+		case-ul implementat, am interschimbat cele 2 segmente, pentru a le putea
+		trata in ordinea cuvenita.
+			Revenind la cazul general, in cazul in care avem un segment vertical,
+		verificam daca pana la el s-a incheiat vreun segment orizontal, ulterior
+		facand actualizarea aferenta cu '-1', in caz pozitiv si continuand
+		cu interogarea specifica.
+			In cazul in care avem, un segment orizontal, facem actualizarea
+		cuvenita cu '+1' specifica intervalului [y, y].
+

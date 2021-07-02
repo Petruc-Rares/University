@@ -1,0 +1,41 @@
+Petruc Rares 312CD rares.petruc
+
+Cerinta tema: https://ocw.cs.pub.ro/courses/programare/teme_2019/tema2_licurici
+
+							TEMA 2 PC
+						-    ABORDAREA TEMEI    -
+
+Task 0: Intr-un loop infinit, am comparat inputul scris de la tastatura 
+		cu o serie de key words pentru a crea consola interactiva.
+		Am ales sa fac un loop infinit, pentru ca la tastarea "quit"
+	    am dat return 0.
+
+		Inainte de a prezenta restul taskurilor, tin sa precizez ca dupa
+        fiecare apelare de tip "load_file(path, poem)" am impartit 
+	    poezia in versuri. Mi s-a parut o abordare relativ eficienta 
+		(mai ales pentru taskurile 4 si 5).
+	
+Task 1: In realizarea functie uppercase, am ales fiecare prima litera din
+		fiecare vers, pe care am facut-o mare. Ulterior, am facut toate literele
+		ramase mici.
+
+Task 2: In realizarea functiei trimming, am copiat fiecare vers intr-un sir 
+		separat(pentru ca strtok sa nu-mi introduca \0) si am cautat cu ajutorul
+		strtok cuvinte pe care le-am alipit ulterior in versul corespunzator.
+
+Task 3: Am inclus headerul necesar pentru srand() si rand(), iar in functia 
+		make_it_silly am verificat daca numarul generat aleator este mai mic
+   		decat probabilitatea citita de la tastatura. Daca prima conditie era 
+		verificata, se verifica daca, caracterul este litera, iar in caz 
+        afirmativ litera se facea mare, in caz contrar, se facea mica.
+
+Task 4: M-am folosit de 2 siruri auxiliare, am impartit fiecare vers in cuvinte.
+		In caz ca unui cuvant ii gaseam un diminutiv, era inlocuit. Ulterior, am
+        adaugat si semnele de punctuatie initiale.
+
+Task 5: Am obtinut fiecare ultim sir, corespunzator fiecarui vers, pe care
+		l-am salvat intr-o copie si ulterior i-am sters semnele de punctuatie.
+		Am verificat tipul de rima specificat de la tastatura, dupa care am
+		cautat prin sinonimele cuvintelor pentru a le inlocui. In final, am 
+		construit noua poezie.
+
